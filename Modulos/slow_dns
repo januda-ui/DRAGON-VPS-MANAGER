@@ -1,0 +1,90 @@
+#!/bin/bash
+clear
+
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
+CORTITLE='\033[1;41m'
+DIR='/etc/VPSManager/dns'
+SCOLOR='\033[0m'
+
+echo -e "${CORTITLE}🐉ㅤDRAGON VPS MANAGER SLOW DNS (Beta)ㅤ🐉${SCOLOR}"
+installslowdns() {
+    echo -e "\n${YELLOW}BE AWARE THAT THIS METHOD IS STILL IN THE BETA PHASE AND THAT BEYOND BEING SLOW IT MAY NOT WORK PERFECTLY ! ${SCOLOR}\n"
+    echo -ne "${GREEN}DO YOU WANT TO CONTINUE THE INSTALLATION? ${YELLOW}[s/n]:${SCOLOR} "
+    read resp
+    [[ "$resp" != @(s|sim|S|SIM) ]] && {
+	    echo -e "\n${RED}Returning...${SCOLOR}"
+	    sleep 2
+	    conexao
+	}
+    mkdir /etc/VPSManager/dns >/dev/null 2>&1
+    wget -P $DIR https://github.com/januda-ui/DRAGON-VPS-MANAGER/raw/main/Modulos/dns-server >/dev/null 2>&1  
+    chmod 777 $DIR/dns-server >/dev/null 2>&1
+    $DIR/dns-server -gen-key -privkey-file $DIR/server.key -pubkey-file $DIR/server.pub >/dev/null 2>&1
+    configdns() {
+        interface=$(ip a |awk '/state UP/{print $2}'| cut -d: -f1)
+        iptables -F >/dev/null 2>&1
+        iptables -I INPUT -p udp --dport 5300 -j ACCEPT
+        iptables -t nat -I PREROUTING -i $interface -p udp --dport 53 -j REDIRECT --to-ports 5300
+        ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT
+        ip6tables -t nat -I PREROUTING -i $interface -p udp --dport 53 -j REDIRECT --to-ports 5300
+        chmod +x /bin/slowdns
+        [[ $(grep -wc 'DNSStubListener=no' /etc/systemd/resolved.conf) == '0' ]] && {
+            echo 'DNSStubListener=no' > /etc/systemd/resolved.conf
+            systemctl restart systemd-resolved
+        }
+    }
+    configdns >/dev/null 2>&1
+    cat /dev/null > ~/.bash_history && history -c
+}
+initslow() {
+    if ps x | grep -w dns-server | grep -v grep 1>/dev/null 2>/dev/null; then 
+        screen -r -S "slow_dns" -X quit >/dev/null 2>&1
+        screen -wipe > /dev/null 2>&1
+        sed -i '/slow_dns/d' /etc/autostart
+        echo -e "\n${RED}SLOWDNS DISABLED !${SCOLOR}"
+        sleep 2
+        conexao
+    else
+        echo -ne "\n${GREEN}INFORM THE NS DOMAIN${SCOLOR}: "
+        read ns
+        [[ -z "$ns" ]] && {
+            echo -e "\n${RED}INVALID DOMAIN!${SCOLOR}"
+            sleep 2
+            conexao
+        }
+        echo -e "\n${RED}[${CYAN}1${RED}] ${YELLOW}SSH MODE${SCOLOR}"
+        echo -e "${RED}[${CYAN}2${RED}] ${YELLOW}SSL MODE${SCOLOR}"
+        echo -ne "\n${GREEN}ENTER AN OPTION${SCOLOR}: "
+        read opcc
+        if [[ "$opcc" == '1' ]]; then
+            ptdns='22'
+        elif [[ "$opcc" == '2' ]]; then
+            ptdns='443'
+        else
+            echo -e "\n${RED}INVALID OPTION${SCOLOR}"
+            sleep 2
+            conexao
+        fi
+        [[ $opcc == '1' ]] 
+        cd /etc/VPSManager/dns
+        screen -dmS slow_dns ./dns-server -udp :5300 -privkey-file server.key ${ns} 0.0.0.0:${ptdns} >/dev/null 2>&1
+        keypub=$(cat $DIR/server.pub)
+        cd $HOME
+        echo "ps x | grep 'slow_dns' | grep -v 'grep' || screen -dmS slow_dns $DIR/dns-server -udp :5300 -privkey-file /etc/VPSManager/dns/server.key ${ns} 0.0.0.0:${ptdns}" >> /etc/autostart
+        tmx='curl -sO https://github.com/januda-ui/DRAGON-VPS-MANAGER/raw/main/Modulos/slowdns && chmod +x slowdns && ./slowdns'
+        echo -e "\n${GREEN}SLOWDNS ENABLED !${SCOLOR}"
+        echo -e "\n${YELLOW}TERMUX COMMAND${SCOLOR}: ${tmx} ${ns} ${keypub}"
+        echo -ne "\n${RED}ENTER${YELLOW} to return to${GREEN} MENU!${SCOLOR}"; read
+        conexao
+    fi
+}
+[[ -d $DIR ]] && {
+    initslow
+} || {
+    installslowdns
+    sleep 1
+    initslow
+}

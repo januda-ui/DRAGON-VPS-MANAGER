@@ -1,0 +1,179 @@
+#! /bin/sh
+
+
+NAME=squid3
+DESC="Squid HTTP Proxy"
+DAEMON=/usr/sbin/squid3
+PIDFILE=/var/run/$NAME.pid
+CONFIG=/etc/squid3/squid.conf
+SQUID_ARGS="-YC -f $CONFIG"
+
+[ ! -f /etc/default/squid ] || . /etc/default/squid
+
+. /lib/lsb/init-functions
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+[ -x $DAEMON ] || exit 0
+
+ulimit -n 65535
+
+find_cache_dir () {
+	w=" 	"
+        res=`$DAEMON -k parse -f $CONFIG 2>&1 |
+		grep "Processing:" |
+		sed s/.*Processing:\ // |
+		sed -ne '
+			s/^['"$w"']*'$1'['"$w"']\+[^'"$w"']\+['"$w"']\+\([^'"$w"']\+\).*$/\1/p;
+			t end;
+			d;
+			:end q'`
+        [ -n "$res" ] || res=$2
+        echo "$res"
+}
+
+grepconf () {
+	w=" 	"
+        res=`$DAEMON -k parse -f $CONFIG 2>&1 |
+		grep "Processing:" |
+		sed s/.*Processing:\ // |
+		sed -ne '
+			s/^['"$w"']*'$1'['"$w"']\+\([^'"$w"']\+\).*$/\1/p;
+			t end;
+			d;
+			:end q'`
+	[ -n "$res" ] || res=$2
+	echo "$res"
+}
+
+create_run_dir () {
+	run_dir=/var/run/squid3
+	usr=`grepconf cache_effective_user proxy`
+	grp=`grepconf cache_effective_group proxy`
+
+	if [ "$(dpkg-statoverride --list $run_dir)" = "" ] &&
+	   [ ! -e $run_dir ] ; then
+		mkdir -p $run_dir
+	  	chown $usr:$grp $run_dir
+		[ -x /sbin/restorecon ] && restorecon $run_dir
+	fi
+}
+
+start () {
+	cache_dir=`find_cache_dir cache_dir`
+	cache_type=`grepconf cache_dir`
+	run_dir=/var/run/squid3
+	create_run_dir
+
+	if test -d "$cache_dir" -a ! -d "$cache_dir/00"
+	then
+		log_warning_msg "Creating $DESC cache structure"
+		$DAEMON -z -f $CONFIG
+		[ -x /sbin/restorecon ] && restorecon -R $cache_dir
+	fi
+
+	umask 027
+	ulimit -n 65535
+	cd $run_dir
+	start-stop-daemon --quiet --start \
+		--pidfile $PIDFILE \
+		--exec $DAEMON -- $SQUID_ARGS < /dev/null
+	return $?
+}
+
+stop () {
+	PID=`cat $PIDFILE 2>/dev/null`
+	start-stop-daemon --stop --quiet --pidfile $PIDFILE --exec $DAEMON
+	sleep 2
+	if test -n "$PID" && kill -0 $PID 2>/dev/null
+	then
+		log_action_begin_msg " Waiting"
+		cnt=0
+		while kill -0 $PID 2>/dev/null
+		do
+			cnt=`expr $cnt + 1`
+			if [ $cnt -gt 24 ]
+			then
+				log_action_end_msg 1
+				return 1
+			fi
+			sleep 5
+			log_action_cont_msg ""
+		done
+		log_action_end_msg 0
+		return 0
+	else
+		return 0
+	fi
+}
+
+cfg_pidfile=`grepconf pid_filename`
+if test "${cfg_pidfile:-none}" != "none" -a "$cfg_pidfile" != "$PIDFILE"
+then
+	log_warning_msg "squid.conf pid_filename overrides init script"
+	PIDFILE="$cfg_pidfile"
+fi
+
+case "$1" in
+    start)
+	res=`$DAEMON -k parse -f $CONFIG 2>&1 | grep -o "FATAL: .*"`
+	if test -n "$res";
+	then
+		log_failure_msg "$res"
+		exit 3
+	else
+		log_daemon_msg "Starting $DESC" "$NAME"
+		if start ; then
+			log_end_msg $?
+		else
+			log_end_msg $?
+		fi
+	fi
+	;;
+    stop)
+	log_daemon_msg "Stopping $DESC" "$NAME"
+	if stop ; then
+		log_end_msg $?
+	else
+		log_end_msg $?
+	fi
+	;;
+    reload|force-reload)
+	res=`$DAEMON -k parse -f $CONFIG 2>&1 | grep -o "FATAL: .*"`
+	if test -n "$res";
+	then
+		log_failure_msg "$res"
+		exit 3
+	else
+		log_action_msg "Reloading $DESC configuration files"
+	  	start-stop-daemon --stop --signal 1 \
+			--pidfile $PIDFILE --quiet --exec $DAEMON
+		log_action_end_msg 0
+	fi
+	;;
+    restart)
+	res=`$DAEMON -k parse -f $CONFIG 2>&1 | grep -o "FATAL: .*"`
+	if test -n "$res";
+	then
+		log_failure_msg "$res"
+		exit 3
+	else
+		log_daemon_msg "Restarting $DESC" "$NAME"
+		stop
+		if start ; then
+			log_end_msg $?
+		else
+			log_end_msg $?
+		fi
+	fi
+	;;
+    status)
+	status_of_proc -p $PIDFILE $DAEMON $NAME && exit 0 || exit 3
+	;;
+    *)
+	echo "Utilize: /etc/init.d/$NAME {start|stop|reload|force-reload|restart|status}"
+	exit 3
+	;;
+esac
+
+exit 0

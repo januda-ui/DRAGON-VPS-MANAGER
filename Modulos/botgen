@@ -1,0 +1,21 @@
+#!/bin/bash
+[[ $(screen -list| grep -c 'bot_gen') == '0' ]] && {
+    clear
+    echo -e "\E[44;1;37m     ㅤ🐉ㅤDRAGON VPS MANAGER TELE BOT ACTIVATIONㅤ🐉ㅤ     \E[0m"
+    echo ""
+    echo -ne "\033[1;32m◇ INFORM YOUR BOT TOKEN FROM @BotFather\033[1;37m: "; read token
+    echo ""
+    echo -ne "\033[1;32m◇ INFORM YOUR TELEGRAM ID\033[1;37m: "; read idtelegram
+    cd /etc/VPSManager
+    screen -dmS bot_gen ./botgerador $token $idtelegram > /dev/null 2>&1
+    [[ $(grep -wc "bot_gen" /etc/autostart) = '0' ]] && {
+                echo -e "ps x | grep 'bot_gen' | grep -v 'grep' || cd /etc/VPSManager && sudo screen -dmS bot_gen ./botgerador $token $idtelegram && cd $HOME" >>/etc/autostart
+            } || {
+                sed -i '/bot_gen/d' /etc/autostart
+                echo -e "ps x | grep 'bot_gen' | grep -v 'grep' || cd /etc/VPSManager && sudo screen -dmS bot_gen ./botgerador $token $idtelegram && cd $HOME" >>/etc/autostart
+            }  
+    clear && echo "◇ BOT ACTIVATED!"
+} || {
+    screen -r -S "bot_gen" -X quit
+    clear && echo "◇ BOT DISABLED!"
+}

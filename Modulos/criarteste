@@ -1,0 +1,104 @@
+#!/bin/bash
+IP=$(cat /etc/IP)
+if [ ! -d /etc/VPSManager/userteste ]; then
+mkdir /etc/VPSManager/userteste
+fi
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "Create test user" ; tput sgr0
+echo ""
+[ "$(ls -A /etc/VPSManager/userteste)" ] && echo -e "\033[1;32mActive Test User!\033[1;37m" || echo -e "\033[1;31mNo active tests!\033[0m"
+echo ""
+for testeson in $(ls /etc/VPSManager/userteste |sort |sed 's/.sh//g')
+do
+echo "$testeson"
+done
+echo ""
+echo -ne "\033[1;32mUsername\033[1;37m: "; read nome
+if [[ -z $nome ]]
+then
+echo ""
+tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Empty or invalid name." ; echo "" ; tput sgr0
+	exit 1
+fi
+awk -F : ' { print $1 }' /etc/passwd > /tmp/users 
+if grep -Fxq "$nome" /tmp/users
+then
+	tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "This user already exists." ; echo "" ; tput sgr0
+	exit 1
+fi
+echo -ne "\033[1;32mPassword\033[1;37m: "; read pass
+if [[ -z $pass ]]
+then
+echo ""
+tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Empty or invalid password." ; echo "" ; tput sgr0
+	exit 1
+fi
+echo -ne "\033[1;32mLimit\033[1;37m: "; read limit
+if [[ -z $limit ]]
+then
+echo ""
+tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Empty or invalid limit.
+" ; echo "" ; tput sgr0
+	exit 1
+fi
+echo -ne "\033[1;32mminutes \033[1;33m(\033[1;31mEx: \033[1;37m60\033[1;33m)\033[1;37m: "; read u_temp
+if [[ -z $limit ]]
+then
+echo ""
+tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Empty or invalid limit." ; echo "" ; tput sgr0
+	exit 1
+fi
+useradd -M -s /bin/false $nome
+(echo $pass;echo $pass) |passwd $nome > /dev/null 2>&1
+echo "$pass" > /etc/VPSManager/senha/$nome
+echo "$nome $limit" >> /root/usuarios.db
+echo "#!/bin/bash
+pkill -f "$nome"
+userdel --force $nome
+grep -v ^$nome[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
+rm /etc/VPSManager/senha/$nome > /dev/null 2>&1
+rm -rf /etc/VPSManager/userteste/$nome.sh
+exit" > /etc/VPSManager/userteste/$nome.sh
+chmod +x /etc/VPSManager/userteste/$nome.sh
+at -f /etc/VPSManager/userteste/$nome.sh now + $u_temp min > /dev/null 2>&1
+clear
+    echo -e "\033[1;32m===================================="
+    echo -e "\033[1;32m   🐉ㅤDRAGON VPS MANAGERㅤ🐉  " 
+    echo -e "\033[1;32m===================================="
+    echo ""
+    echo -e "\033[1;31m◈─────⪧ IMPORTANT ⪦──────◈"
+    echo ""
+    echo -e "\033[1;32m◈⪧ 🚫 NO SPAM"
+    echo -e "\033[1;32m◈⪧ ⚠️ NO DDOS"
+    echo -e "\033[1;32m◈⪧ 🎭 NO Hacking"
+    echo -e "\033[1;32m◈⪧ ⛔️ NO Carding"
+    echo -e "\033[1;32m◈⪧ 🙅‍♂️ NO Torrent"
+    echo -e "\033[1;32m◈⪧ ❌ NO MultiLogin"
+    echo -e "\033[1;32m◈⪧ 🤷‍♂️ NO Illegal Activities"
+    echo ""
+    echo -e "\033[1;37m◈─────⪧ TEST SSH ACCOUNT ⪦─────◈"
+    echo ""
+    echo -e "\033[1;32m◈ Host / IP   :⪧  \033[1;31m$IP"
+    echo -e "\033[1;32m◈ Username    :⪧  \033[1;31m$nome"
+    echo -e "\033[1;32m◈ Password    :⪧  \033[1;31m$pass"
+    echo -e "\033[1;32m◈ Login Limit :⪧  \033[1;31m$limit"
+    echo -e "\033[1;32m◈ Expire Date :⪧  \033[1;31m$u_temp minutes"
+    echo ""
+    echo -e "\033[1;37m◈──────⪧ PORTS ⪦ ───────◈"
+    echo ""
+    echo -e "\033[1;32m◈ SSH	  ⌁   22"
+    echo -e "\033[1;32m◈ SSL	  ⌁  443"
+    echo -e "\033[1;32m◈ Squid    ⌁  8080"
+    echo -e "\033[1;32m◈ DropBear ⌁  80"
+    echo -e "\033[1;32m◈ BadVPN   ⌁  7300"
+    echo ""
+    echo -e "\033[1;37m◈───⪧ONLINE USER COUNT⪦────◈ "
+    echo ""
+    echo -e "\033[1;32mhttp://$IP:8888/server/online"
+    echo ""
+    echo -e "\033[1;37m◈─────────────────────────────────◈"
+    echo -e "\033[1;37m©️ 🐉  DRAGON VPS MANAGER SCRIPT  🐉"
+    echo -e "\033[1;37m◈─────────────────────────────────◈"
+    echo ""
+    echo -e "\033[1;33mAfter the defined time of the user \033[1;32m$nome"
+    echo -e "\033[1;33mwill be disconnected and deleted.\033[0m"
+exit

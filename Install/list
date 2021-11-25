@@ -1,0 +1,118 @@
+#!/bin/bash
+
+_lvk=$(wget -qO- https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Sistema/versao)
+IP=$(wget -qO- ipv4.icanhazip.com)
+IP2=$(wget -qO- http://whatismyip.akamai.com/)
+[[ "$IP" != "$IP2" ]] && ipdovps="$IP2" || ipdovps="$IP"
+echo -e "$ipdovps" >/etc/IP
+lst=$1 && lst1=$2 && lst2=$3 && key1=$4 && key2=crz
+echo -e "America/Sao_Paulo" >/etc/timezone
+ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime >/dev/null 2>&1
+dpkg-reconfigure --frontend noninteractive tzdata >/dev/null 2>&1
+[[ -z $lst1 ]] && {
+	rm -rf $_Ink/list >/dev/null 2>&1 && cat /dev/null >~/.bash_history && history -c && exit 0
+}
+[[ ! -d /etc/VPSManager ]] && mkdir /etc/VPSManager
+[[ ! -d /etc/VPSManager/senha ]] && mkdir /etc/VPSManager/senha
+[[ ! -e /etc/VPSManager/Exp ]] && touch /etc/VPSManager/Exp
+[[ ! -d /etc/VPSManager/userteste ]] && mkdir /etc/VPSManager/userteste
+[[ ! -d /etc/VPSManager/.tmp ]] && mkdir /etc/VPSManager/.tmp
+[[ ! -d /etc/bot ]] && mkdir /etc/bot
+[[ ! -d /etc/bot/info-users ]] && mkdir /etc/bot/info-users
+[[ ! -d /etc/bot/arquivos ]] && mkdir /etc/bot/arquivos
+[[ ! -d /etc/bot/revenda ]] && mkdir /etc/bot/revenda
+[[ ! -d /etc/bot/suspensos ]] && mkdir /etc/bot/suspensos
+[[ ! -e /etc/bot/lista_ativos ]] && touch /etc/bot/lista_ativos
+[[ ! -e /etc/bot/lista_suspensos ]] && touch /etc/bot/lista_suspensos
+echo -e 'by: @DRAGON_VPS_MANAGER' >/usr/lib/vpsmanager && cat /usr/lib/vpsmanager >$lst2/licence && cat /usr/lib/vpsmanager > /etc/VPSManager/.tmp/vps
+netstat -nplt | grep -w 'apache2' | grep -w '80' && sed -i "s/Listen 80/Listen 8888/g" /etc/apache2/ports.conf && service apache2 restart
+[[ "$(grep -o '#Port 22' /etc/ssh/sshd_config)" == "#Port 22" ]] && sed -i "s;#Port 22;Port 22;" /etc/ssh/sshd_config && service ssh restart
+grep -v "^PasswordAuthentication" /etc/ssh/sshd_config >/tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
+echo "PasswordAuthentication yes" >>/etc/ssh/sshd_config
+_dir1='/bin'
+_dir2='/etc/VPSManager'
+_dir3='/root'
+rm $_dir2/ShellBot.sh $_dir2/cabecalho $_dir2/open.py $_dir2/proxy.py $_dir2/wsproxy.py >/dev/null 2>&1
+_mdls=("addhost" "delhost" "alterarsenha" "criarusuario" "expcleaner" "mudardata" "remover" "criarteste" "verifbot" "droplimiter" "alterarlimite" "ajuda" "sshmonitor" "badvpn" "userbackup" "instsqd" "blockt" "otimizar" "menu" "speedtest" "banner" "senharoot" "reiniciarservicos" "reiniciarsistema" "attscript" "conexao" "delscript" "detalhes" "botssh"  "botteste" "botgen" "infousers" "verifatt" "limiter" "uexpired" "cabecalho" "bot" "botsshteste" "botgerador" "open.py" "slow_dns" "proxy.py" "wsproxy.py")
+_mdls2=("onlineapp.sh")
+for _arq in ${_mdls[@]}; do
+	[[ -e $_dir1/$_arq ]] && rm $_dir1/$_arq >/dev/null 2>&1
+	wget -c -P $_dir1 https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Modulos/$_arq
+	chmod +x $_dir1/$_arq
+done
+for _arq in ${_mdls2[@]}; do
+	[[ -e $_dir3/$_arq ]] && rm $_dir3/$_arq >/dev/null 2>&1
+	wget -c -P $_dir3 https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Modulos/$_arq
+	chmod +x $_dir3/$_arq
+done
+cd /var/www/html && mkdir server
+cd /root && ./onlineapp.sh
+mv $_dir1/cabecalho $_dir1/bot $_dir1/botsshteste $_dir1/botgerador $_dir1/open.py $_dir1/proxy.py $_dir1/wsproxy.py $_dir2
+_arq_host="/etc/hosts"
+_host[0]="d1n212ccp6ldpw.cloudfront.net"
+_host[1]="dns.whatsapp.net"
+_host[2]="portalrecarga.vivo.com.br/recarga"
+_host[3]="navegue.vivo.com.br/controle/"
+_host[4]="navegue.vivo.com.br/pre/"
+_host[5]="www.whatsapp.net"
+_host[6]="/VPSMANAGER?"
+for host in ${_host[@]}; do
+	if [[ "$(grep -w "$host" $_arq_host | wc -l)" = "0" ]]; then
+		sed -i "3i\127.0.0.1 $host" $_arq_host
+	fi
+done
+[[ ! -e /etc/autostart ]] && {
+	echo '#!/bin/bash
+clear
+#AUTOMATIC START' >/etc/autostart
+	chmod +x /etc/autostart
+} || {
+	[[ $(ps x | grep "bot_plus" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
+	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
+		screen -r -S "$proc" -X quit	
+done
+	screen -wipe >/dev/null
+	echo '#!/bin/bash
+clear
+
+#AUTOMATIC START' >/etc/autostart
+	chmod +x /etc/autostart
+} || {
+	[[ $(ps x | grep "bot_teste" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
+	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
+		screen -r -S "$proc" -X quit	
+done
+	screen -wipe >/dev/null
+	echo '#!/bin/bash
+clear
+
+#AUTOMATIC START' >/etc/autostart
+	chmod +x /etc/autostart
+} || {
+	[[ $(ps x | grep "bot_gen" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
+	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
+		screen -r -S "$proc" -X quit	
+done
+	screen -wipe >/dev/null
+	echo '#!/bin/bash
+clear
+
+#AUTOMATIC START' >/etc/autostart
+	chmod +x /etc/autostart
+}
+crontab -r >/dev/null 2>&1
+(
+	crontab -l 2>/dev/null
+	echo "@daily /bin/verifatt"
+	echo "@reboot /etc/autostart"
+	echo "* * * * * /etc/autostart"
+	echo "0 */6 * * * /bin/uexpired"
+	echo "*/1 * * * * cd /root/ && ./onlineapp.sh"
+) | crontab -
+echo "$_lvk" | sed -n '1 p' | cut -d' ' -f2 >/bin/versao && cat /bin/versao >/home/vpsmanager
+wget https://github.com/januda-ui/DRAGON-VPS-MANAGER/raw/main/Install/jq-linux64 >/dev/null 2>&1
+chmod +x jq-linux64 && mv jq-linux64 $(which jq)
+service cron restart >/dev/null 2>&1
+service ssh restart >/dev/null 2>&1
+[[ -d /var/www/html/openvpn ]] && service apache2 restart >/dev/null 2>&1
+rm -rf $lst1/list >/dev/null 2>&1

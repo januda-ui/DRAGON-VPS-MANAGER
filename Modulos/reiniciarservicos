@@ -1,0 +1,53 @@
+#!/bin/bash
+clear
+fun_prog ()
+{
+	comando[0]="$1" 
+    ${comando[0]}  > /dev/null 2>&1 & 
+	tput civis
+	echo -ne "\033[1;32m.\033[1;33m.\033[1;31m. \033[1;32m"
+    while [ -d /proc/$! ]
+	do
+		for i in / - \\ \|
+		do
+			sleep .1
+			echo -ne "\e[1D$i"
+		done
+	done
+	tput cnorm
+	echo -e "\e[1DOK"
+}
+echo -ne "\033[1;33m◇ RESTARTING OPENSSH "; fun_prog 'service ssh restart'
+echo ""
+sleep 1
+if [[ -e /etc/squid/squid.conf ]]; then
+echo -ne "\033[1;33m◇ RESTARTING SQUID PROXY "; fun_prog 'service squid restart'
+echo ""
+sleep 1
+elif [[ -e /etc/squid3/squid.conf ]]; then
+echo -ne "\033[1;33m◇ RESTARTING SQUID PROXY "; fun_prog 'service squid3 restart'
+echo ""
+sleep 1
+fi
+if [[ -e /etc/stunnel/stunnel.conf ]]; then
+echo -ne "\033[1;33m◇ RESTARTING SSL TUNNEL "; fun_prog 'service stunnel4 restart'
+echo ""
+sleep 1
+fi
+if [[ -e /etc/init.d/dropbear ]]; then
+echo -ne "\033[1;33m◇ RESTARTING DROPBEAR "; fun_prog 'service dropbear restart'
+echo ""
+sleep 1
+fi
+if [[ -e /etc/openvpn/server.conf ]]; then
+echo -ne "\033[1;33m◇ RESTARTING OPENVPN "; fun_prog 'service openvpn restart'
+echo ""
+sleep 1
+fi
+if netstat -nltp|grep 'apache2' > /dev/null; then
+echo -ne "\033[1;33m◇ RESTARTING APACHE2 "; fun_prog '/etc/init.d/apache2 restart'
+echo ""
+sleep 1
+fi
+echo -e "\033[1;32m◇ SERVICES RESTARTED SUCCESSFULLY!\033[0m"
+sleep 1

@@ -45,7 +45,7 @@ __Based on__
   <span><a href=""><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/icons8-ubuntu-48.png?raw=true" alt=""width="50"height="50"/></a></span>
   <span><a href=""><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/icons8-ssh-48.png?raw=true" alt=""width="50"height="50"/></a></span>
   <span><a href=""><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/icons8-console-50.png?raw=true" alt=""width="50"height="50"/></a></span>
-  <span><a href=""><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/business-3d-browser-1.png?raw=true" alt=""width="50"height="50"/></a></span>
+  <span><a href="https://github.com/NT-GIT-HUB/VPS-MANAGER-1.0"><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/business-3d-browser-1.png?raw=true" alt=""width="50"height="50"/></a></span>
   <span><a href=""><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/clip-internet-security.png?raw=true" alt=""width="50"height="50"/></a></span>
 </div>
  </p>

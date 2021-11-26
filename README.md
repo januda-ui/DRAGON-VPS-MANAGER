@@ -4,7 +4,7 @@
 
 <p><center><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/dragon%20logo-2.png?raw=true" class="centerImage" alt=""width="550"height="550"></center></p>
 
-<p>────────────────────────────────────────────────────────────────────</p>
+<p>─────────────────────────────────────────────────</p>
 
 
 __Install SCRIPT only__
@@ -22,7 +22,7 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
 
 ```
 
-────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────
 
  <p>    
 <div class="div1">
@@ -35,6 +35,6 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
   <span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/clip-internet-security.png?raw=true" alt=""width="50"height="50"/></span>
 </div>
 </p>
-────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────
 
 [![License](https://www.gnu.org/graphics/gplv3-127x51.png)](LICENSE)

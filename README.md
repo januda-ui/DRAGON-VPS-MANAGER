@@ -42,7 +42,6 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
  <span><img src="https://user-images.githubusercontent.com/83800532/143565842-884cbdae-43d0-4eec-8985-98d4d04551cd.png" alt=""width="50"height="50"/></span>
  <span><img src="https://user-images.githubusercontent.com/83800532/143565697-a4f54037-2256-4bc5-8067-4cb865e99de8.png" alt=""width="50"height="50"/></span>
  <span><img src="https://user-images.githubusercontent.com/83800532/143565526-c1009b7c-047f-4b5e-9b43-6759f9dfa11f.png" alt=""width="50"height="50"/></span>
- <span><img src="" alt=""width="50"height="50"/></span>
 </div>
  </p>
  

@@ -22,7 +22,7 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
 ```
 ─────────────────────────────────────────────────
 
-<h2>◇────── SCREENSHOTS ───────◇</h2>
+<h2>─────────── SCREENSHOTS ────────────</h2>
 
 ─────────────────────────────────────────────────
 

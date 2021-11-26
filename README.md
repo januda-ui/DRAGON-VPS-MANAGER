@@ -2,6 +2,10 @@
 <h2>◇───────🐉Welcome To DRAGON VPS MANAGER 🐉───────◇<img src="https://raw.githubusercontent.com/januda-ui/januda-ui/main/icons/dragonvps1.png?raw=true" alt=""  class="center">
 </h2>
 
+<img src="https://raw.githubusercontent.com/januda-ui/januda-ui/main/icons/dragonvps1.png" class="centerImage" alt="CH Logo">
+
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/januda-ui/januda-ui/main/icons/dragonvps1.png" alt="Logo"></p>
+
 <p>────────────────────────────────────────────────────────────────────</p>
 
 

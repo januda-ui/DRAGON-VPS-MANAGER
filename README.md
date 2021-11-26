@@ -23,7 +23,7 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
 
 ────────────────────────────────────────────────────────────────────
 
-     
+ <p>    
 <div class="div1">
   <span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/icons8-linux.gif?raw=true" alt=""width="50"height="50"/></span>
   <span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/icons8-internet.gif?raw=true" alt=""width="50"height="50"/></span>
@@ -33,7 +33,7 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
   <span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/business-3d-browser-1.png?raw=true" alt=""width="50"height="50"/></span>
   <span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/clip-internet-security.png?raw=true" alt=""width="50"height="50"/></span>
 </div>
-
+</p>
 ────────────────────────────────────────────────────────────────────
 
 [![License](https://www.gnu.org/graphics/gplv3-127x51.png)](LICENSE)

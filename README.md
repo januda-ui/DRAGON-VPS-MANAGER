@@ -1,5 +1,5 @@
 
-<h2>◇───────🐉Welcome To DRAGON VPS MANAGER 🐉───────◇
+<h2>◇─────── DRAGON VPS MANAGER ───────◇
 </h2>
 
 <p><center><img src="https://raw.githubusercontent.com/januda-ui/januda-ui/main/icons/dragonvps1.png" class="centerImage" alt="CH Logo"></center></p>

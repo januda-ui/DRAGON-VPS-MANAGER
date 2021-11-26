@@ -38,13 +38,13 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
 ─────────────────────────────────────────────────
  <p>    
 <div class="div2">
- <span><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="50"height="50"/></span>
- <span><img src="https://user-images.githubusercontent.com/83800532/143565842-884cbdae-43d0-4eec-8985-98d4d04551cd.png" alt=""width="50"height="50"/></span>
- <span><img src="https://user-images.githubusercontent.com/83800532/143565697-a4f54037-2256-4bc5-8067-4cb865e99de8.png" alt=""width="50"height="50"/></span>
- <span><img src="https://user-images.githubusercontent.com/83800532/143565526-c1009b7c-047f-4b5e-9b43-6759f9dfa11f.png" alt=""width="50"height="50"/></span>
+ <span><a href="t.me/s/dragon_vps_manager"><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="50"height="50"/></a></span>
+ <span><a href="https://github.com/januda-ui/DRAGON-VPS-MANAGER"><img src="https://user-images.githubusercontent.com/83800532/143565842-884cbdae-43d0-4eec-8985-98d4d04551cd.png" alt=""width="50"height="50"/></a></span>
+ <span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143565697-a4f54037-2256-4bc5-8067-4cb865e99de8.png" alt=""width="50"height="50"/></a></span>
+ <span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143565526-c1009b7c-047f-4b5e-9b43-6759f9dfa11f.png" alt=""width="50"height="50"/></a></span>
 </div>
  </p>
- 
+  
  
 ─────────────────────────────────────────────────
 

@@ -1,6 +1,5 @@
 
-<h2>◇────── DRAGON VPS MANAGER ───────◇
-</h2>
+<h2>◇────── DRAGON VPS MANAGER ───────◇</h2>
 
 <p><center><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/dragon%20logo-2.png?raw=true" class="centerImage" alt=""width="550"height="550"></center></p>
 
@@ -21,6 +20,9 @@ __Update System Packages and Install SCRIPT__
 apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
 
 ```
+─────────────────────────────────────────────────
+
+<h2>◇────── SCREENSHOTS ───────◇</h2>
 
 ─────────────────────────────────────────────────
 

@@ -2,7 +2,7 @@
 <h2>◇────── DRAGON VPS MANAGER ───────◇
 </h2>
 
-<p><center><img src="https://raw.githubusercontent.com/januda-ui/januda-ui/main/icons/dragonvps1.png" class="centerImage" alt="CH Logo"></center></p>
+<p><center><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/dragon%20logo-2.png?raw=true" class="centerImage" alt=""width="550"height="550"></center></p>
 
 <p>────────────────────────────────────────────────────────────────────</p>
 

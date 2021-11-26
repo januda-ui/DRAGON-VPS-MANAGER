@@ -7,7 +7,7 @@
 ## ㅤ
 
 
-__Install SCRIPT only__
+___Install SCRIPT only___
 
 ```
 wget https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
@@ -15,7 +15,7 @@ wget https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/hehe; c
 ```
 ## ㅤ
 
-__Update System Packages and Install SCRIPT__
+___Update System Packages and Install SCRIPT___
 
 ```
 apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
@@ -24,7 +24,9 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
 
 
 
-## ─────────── SCREENSHOTS ────────────
+## ㅤ
+
+___Screenshots___
 
 <details>
   <summary><p><b>Click To View </b><span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143572065-ca450924-e72b-4041-ab31-3798618973f4.png" alt=""width="20"height="20"/></a></span></p></summary>
@@ -36,7 +38,7 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
 
 ## ㅤ
 
-__Based on__
+___Based on___
 
  <p>    
 <div class="div1">
@@ -52,7 +54,7 @@ __Based on__
  
 ## ㅤ
 
-__Follow Us!__
+___Follow Us!___
 
  <p>    
 <div class="div2">
@@ -66,6 +68,6 @@ __Follow Us!__
  
 ##  ㅤ
 
-__Licence__
+___Licence___
 
 [![License](https://www.gnu.org/graphics/gplv3-127x51.png)](LICENSE)

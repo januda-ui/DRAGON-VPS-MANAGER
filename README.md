@@ -6,23 +6,22 @@
 
 <p>────────────────────────────────────────────────────────────────────</p>
 
-<p>
+
 __Install SCRIPT only__
 
 ```
 wget https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
 
 ```
-</p>
 
-<p>
-__Install SCRIPT and update system packages__
+
+__Update System Packages and Install SCRIPT__
 
 ```
 apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
 
 ```
-</p>
+
 ────────────────────────────────────────────────────────────────────
 
  <p>    

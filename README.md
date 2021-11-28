@@ -35,7 +35,7 @@ ___Screenshots___
   <summary><p><b>Click To View </b><span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143572065-ca450924-e72b-4041-ab31-3798618973f4.png" alt=""width="20"height="20"/></a></span></p></summary>
 <br/>
 
-<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/business-3d-browser-1.png?raw=true" alt=""width="50"height="50"/></span></p>
+<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/business-3d-browser-1.png?raw=true" alt=""width="1280"height="720"/></span></p>
 
 </details>
 

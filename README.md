@@ -64,6 +64,12 @@ ___Follow Us!___
  <span><a href="https://t.me/s/dragon_vps_manager"><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="50"height="50"/></a></span>
  </div>
  </p>
+ 
+
+##  ㅤ
+___Credits___
+
+https://telegra.ph/DRAGON-VPS-MANAGER-11-30
   
  
 ##  ㅤ
@@ -71,3 +77,4 @@ ___Follow Us!___
 ___Licence___
 
 [![License](https://www.gnu.org/graphics/gplv3-127x51.png)](LICENSE)
+

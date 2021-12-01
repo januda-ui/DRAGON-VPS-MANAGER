@@ -57,8 +57,8 @@ ___Based on___
  
 ___Credits___
 
-<p><a href="https://telegra.ph/DRAGON-VPS-MANAGER-11-30" target="_blank" rel="noopener">https://telegra.ph/DRAGON-VPS-MANAGER-11-30</a></p>
-
+<p>see on <a href="https://telegra.ph/DRAGON-VPS-MANAGER-11-30" target="_blank" rel="noopener">Telegra.ph</a>&nbsp;</p>
+<p>see on <a href="https://github.com/januda-ui/DRAGON-VPS-MANAGER/wiki/Credits" target="_blank" rel="noopener">wiki</a></p>
 
 ## ㅤ
 

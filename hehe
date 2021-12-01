@@ -135,7 +135,7 @@ IP=$(wget -qO- ipv4.icanhazip.com)
 echo -e "        \033[1;33m  \033[1;32m◇ INSTALLATION COMPLETED.◇\033[1;33m  \033[0m"
 echo ""
 echo -e "\033[1;31m\033[1;33m◇ MAIN COMMAND:- \033[1;32mmenu\033[0m"
-echo -e "\033[1;33m◇ MORE INFORMATION \033[1;31m(\033[1;36m◇ TELEGRAM\033[1;31m): \033[1;37m@DRAGON_VPS_MANAGER \033[1;31m( \033[1;36m https://t.me/DRAGON_VPS_MANAGER \033[1;31m )\033[0m"
+echo -e "\033[1;33m◇ MORE INFORMATION \033[1;31m(\033[1;36m◇ TELEGRAM\033[1;31m): \033[1;37m@DRAGON_VPS_MANAGER \033[1;31m( \033[1;36m https://t.me/s/DRAGON_VPS_MANAGER \033[1;31m )\033[0m"
 echo -e ""
 echo -e "\033[1;31m \033[1;33m◇--TIP!--◇\033[1;36mㅤ--Using this url you can easily see the number of users online at the server.\033[0m"
 echo -e " http://$IP:8888/server/online"

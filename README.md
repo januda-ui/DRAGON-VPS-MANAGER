@@ -57,9 +57,9 @@ ___Based on___
  
 ___Credits___
 
-https://telegra.ph/DRAGON-VPS-MANAGER-11-30
-  
- 
+<p><a href="https://telegra.ph/DRAGON-VPS-MANAGER-11-30" target="_blank" rel="noopener">https://telegra.ph/DRAGON-VPS-MANAGER-11-30</a></p>
+
+
 ## ㅤ
 
 ___Follow Us!___

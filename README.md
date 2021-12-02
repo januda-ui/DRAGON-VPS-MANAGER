@@ -38,7 +38,7 @@ ___Tutorial___
 ___Screenshots___
 
 <details>
-  <summary><p><b>Click To View </b><div class="div0"> <span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143572065-ca450924-e72b-4041-ab31-3798618973f4.png" alt=""width="30"height="30"/><span><a href=""><img src="https://user-images.githubusercontent.com/83800532/144479843-ab04c6b5-9514-4863-b714-a1b391f42b27.png" alt=""width="30"height="30"/></a></span></p></summary></div>
+  <summary><p><b>Click To View [Terminal] </b><div class="div0"> <span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143572065-ca450924-e72b-4041-ab31-3798618973f4.png" alt=""width="30"height="30"/><span><a href=""><img src="https://user-images.githubusercontent.com/83800532/144479843-ab04c6b5-9514-4863-b714-a1b391f42b27.png" alt=""width="30"height="30"/></a></span></p></summary></div>
 <br/>
 
 <p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/dragon_ss_1.png" alt=""/></span></p>
@@ -51,7 +51,7 @@ ___Screenshots___
 
 
 <details>
-  <summary><p><b>Click To View </b><div class="div0"> <span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143572065-ca450924-e72b-4041-ab31-3798618973f4.png" alt=""width="30"height="30"/><span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="30"height="30"/></a></span></p></summary></div>
+  <summary><p><b>Click To View [Telegram Bot]</b><div class="div0"> <span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143572065-ca450924-e72b-4041-ab31-3798618973f4.png" alt=""width="30"height="30"/><span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="30"height="30"/></a></span></p></summary></div>
 <br/>
 
 <p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/Screenshot%20(38).png" alt=""/></span></p>

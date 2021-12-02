@@ -28,8 +28,11 @@ apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/ja
 
 ___Tutorial___
 
+<P>
 <span><a href="https://youtu.be/O3wk0-0wEns"><img src="https://user-images.githubusercontent.com/83800532/144338371-863e111a-bf0e-4cc5-853f-0ba0cd384956.png" alt=""width="50"height="50"/></a></span>
-
+</P>
+  
+  
 ## ㅤ
 
 ___Screenshots___

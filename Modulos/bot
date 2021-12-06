@@ -1261,10 +1261,10 @@ restaure_backup() {
 }
 msg_bem_vindo() {
     local msg
-    msg="Hello ${message_from_first_name[$id]} ! 👋 Welcome to\n"
+    msg="👋 Hello ${message_from_first_name[$id]} ! \n\n🤝 Welcome to\n"
     msg+="<b>====================================</b>\n<b>               🐉 DRAGON VPS MANAGER 🐉   </b>\n<b>====================================</b>\n\n"
     msg+="<b>To access the menu</b>\n<b>click [ /menu ]</b>\n\n"
-    msg+="<b>For information</b>\n<b>click [ /help ]</b>\n\n"
+    msg+="<b>For information</b>\n<b>click [ /help ]</b>\n\n ✅ All Tutorials & Updates : @DRAGON_VPS_MANAGER"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --parse_mode html

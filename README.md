@@ -94,6 +94,11 @@ ___Follow Us!___
  </div>
  </p>
  
+## ㅤ
+ 
+___⚠️ Announcement ⚠️___
+
+<p><i>This script is not our own <a href="https://t.me/s/singledevelopers/">@SingleDevelopers</a> creation and we will be working on providing our own script soon.<i></p>
 
  
 ##  ㅤ

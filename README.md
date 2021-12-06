@@ -31,8 +31,6 @@ ___Tutorial___
 <P>
 <span><a href="https://vimeo.com/652289751"><img src="https://user-images.githubusercontent.com/83800532/144345002-c3ec5251-f723-4a81-bcaa-ad4579562218.png" alt=""width="50"height="50"/></a></span>
 </P>
-<br/>
-<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-post="DRAGON_VPS_MANAGER/14" data-width="100%"></script>
   
 
 ## ㅤ

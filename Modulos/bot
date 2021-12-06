@@ -19,9 +19,11 @@ fun_menu() {
         env_msg+="<b>🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
         env_msg+="<b>◈──────────────────◈</b>\n\n"
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
+	local start_img
+	start_img="https://telegra.ph/file/d79ee496ef99342e651ef.jpg"
         ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --caption "$env_msg" \
             --reply_markup "$keyboard1" \
-	    --photo "https://telegra.ph/file/d79ee496ef99342e651ef.jpg" \
+	    --photo "$start_img" \
             --parse_mode html
         return 0
     }
@@ -36,8 +38,11 @@ fun_menu() {
         env_msg+="<b>🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
         env_msg+="<b>◈──────────────────◈</b>\n\n"
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$env_msg" \
-            --reply_markup "$keyboard2" \
+	local start_img
+	start_img="https://telegra.ph/file/d79ee496ef99342e651ef.jpg"
+        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --caption "$env_msg" \
+            --reply_markup "$keyboard1" \
+	    --photo "$start_img" \
             --parse_mode html
         return 0
     elif [[ "$(grep -w "${message_from_username}" $ativos | grep -wc 'subrevenda')" != '0' ]]; then
@@ -46,8 +51,11 @@ fun_menu() {
         env_msg+="<b>🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
         env_msg+="<b>◈──────────────────◈</b>\n\n"
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$env_msg" \
-            --reply_markup "$keyboard3" \
+	local start_img
+	start_img="https://telegra.ph/file/d79ee496ef99342e651ef.jpg"
+        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --caption "$env_msg" \
+            --reply_markup "$keyboard1" \
+	    --photo "$start_img" \
             --parse_mode html
         return 0
     else

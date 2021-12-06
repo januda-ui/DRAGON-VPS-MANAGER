@@ -1258,6 +1258,8 @@ msg_bem_vindo() {
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --parse_mode html
+    ShellBot.sendSticker --chat_id ${message_chat_id[$id]} \
+        --sticker "CAACAgIAAxkBAAEDZt1hqPwEyUPLlqUVp27340hwwsO8OAACugADMNSdEYTXxIjEUGdWIgQ"
     return 0
 }
 

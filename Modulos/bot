@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ ! -d /etc/VPSManager ]] && exit 0
+[[ ! -d /etc/PSManager ]] && exit 0
 [[ ! -d /etc/bot ]] && exit 0
 source ShellBot.sh
 api_bot=$1

@@ -16,7 +16,7 @@ fun_menu() {
     [[ "${message_from_id[$id]}" == "$id_admin" ]] && {
         local env_msg
         env_msg="<b>◈──────────────────◈</b>\n"
-        env_msg+="<b>          🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
+        env_msg+="<b>🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
         env_msg+="<b>◈──────────────────◈</b>\n\n"
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$env_msg" \
@@ -32,7 +32,7 @@ fun_menu() {
     if [[ "$(grep -w "${message_from_username}" $ativos | grep -wc 'revenda')" != '0' ]]; then
         local env_msg
         env_msg="<b>◈──────────────────◈</b>\n"
-        env_msg+="<b>          🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
+        env_msg+="<b>🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
         env_msg+="<b>◈──────────────────◈</b>\n\n"
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$env_msg" \
@@ -42,7 +42,7 @@ fun_menu() {
     elif [[ "$(grep -w "${message_from_username}" $ativos | grep -wc 'subrevenda')" != '0' ]]; then
         local env_msg
         env_msg="<b>◈──────────────────◈</b>\n"
-        env_msg+="<b>          🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
+        env_msg+="<b>🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
         env_msg+="<b>◈──────────────────◈</b>\n\n"
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$env_msg" \
@@ -99,6 +99,8 @@ fun_ajuda() {
     elif [[ -d /etc/bot/suspensos/$id_name ]]; then
         ShellBot.sendMessage --chat_id $id_chatuser \
             --text "$(echo -e "🚫 YOU ARE SUSPENDED 🚫\n\nCONTACT THE ADMINISTRATOR")"
+	ShellBot.sendSticker --chat_id $id_chatuser \
+            --sticker "CAACAgEAAxkBAAEDbIdhrlBIJ-fUNJHXn-g352lK26WtBQACYgEAAgkeUEUw-f8AAZo7VDciBA"
         return 0
     elif [[ "$(grep -w "$id_name" $ativos | awk '{print $NF}')" == 'revenda' ]]; then
         local env_msg
@@ -125,6 +127,9 @@ fun_ajuda() {
         ShellBot.sendMessage --chat_id $id_chatuser \
             --text "$(echo -e $env_msg)" \
             --parse_mode html
+	ShellBot.sendMessage --chat_id $id_chatuser \
+            --text "✅ All Tutorials & Updates : @DRAGON_VPS_MANAGER" \
+            --parse_mode html
         return 0
     elif [[ "$(grep -w "$id_name" $ativos | awk '{print $NF}')" == 'subrevenda' ]]; then
         local env_msg
@@ -149,10 +154,15 @@ fun_ajuda() {
         ShellBot.sendMessage --chat_id $id_chatuser \
             --text "$(echo -e $env_msg)" \
             --parse_mode html
+	ShellBot.sendMessage --chat_id $id_chatuser \
+            --text "✅ All Tutorials & Updates : @DRAGON_VPS_MANAGER" \
+            --parse_mode html
         return 0
     else
         ShellBot.sendMessage --chat_id $id_chatuser \
             --text "$(echo -e 🚫 ACCESS DENIED 🚫)"
+	ShellBot.sendSticker --chat_id $id_chatuser \
+            --sticker "CAACAgEAAxkBAAEDbIdhrlBIJ-fUNJHXn-g352lK26WtBQACYgEAAgkeUEUw-f8AAZo7VDciBA"
         return 0
     fi
 }
@@ -1716,6 +1726,8 @@ infouserbot() {
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
             --text "$(echo -e "<b>NAME: </> ${message_from_first_name[$(ShellBot.ListUpdates)]}\n<b>USERNAME:</>" "@${message_from_username[$(ShellBot.ListUpdates)]:-null}")\n<b>ID:</> ${message_from_id[$(ShellBot.ListUpdates)]} " \
             --parse_mode html
+	ShellBot.sendSticker --chat_id ${message_chat_id[$id]} \
+            --sticker "CAACAgIAAxkBAAEDbJdhrlMi5WT2IvHUwY_3V9t-HQ_tUQACFgADwDZPE2Ah1y2iBLZnIgQ"
         return 0
     }
 }

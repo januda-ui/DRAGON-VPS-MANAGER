@@ -19,8 +19,9 @@ fun_menu() {
         env_msg+="<b>🐉 DRAGON VPS MANAGER BOT 🐉</b>\n"
         env_msg+="<b>◈──────────────────◈</b>\n\n"
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$env_msg" \
+        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --caption "$env_msg" \
             --reply_markup "$keyboard1" \
+	    --photo "https://telegra.ph/file/d79ee496ef99342e651ef.jpg" \
             --parse_mode html
         return 0
     }

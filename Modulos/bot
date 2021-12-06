@@ -21,10 +21,9 @@ fun_menu() {
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
 	local start_img
 	start_img="https://telegra.ph/file/d79ee496ef99342e651ef.jpg"
-        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --caption "$env_msg" \
-            --reply_markup "$keyboard1" \
-	    --photo "$start_img" \
-            --parse_mode html
+        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --photo "$start_img" --caption "$env_msg" \
+            --parse_mode html \
+	    --reply_markup "$keyboard1"
         return 0
     }
     [[ -d /etc/bot/suspensos/${message_from_username} ]] && {
@@ -40,10 +39,9 @@ fun_menu() {
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
 	local start_img
 	start_img="https://telegra.ph/file/d79ee496ef99342e651ef.jpg"
-        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --caption "$env_msg" \
-            --reply_markup "$keyboard1" \
-	    --photo "$start_img" \
-            --parse_mode html
+        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --photo "$start_img" --caption "$env_msg" \
+            --parse_mode html \
+	    --reply_markup "$keyboard1"
         return 0
     elif [[ "$(grep -w "${message_from_username}" $ativos | grep -wc 'subrevenda')" != '0' ]]; then
         local env_msg
@@ -53,10 +51,9 @@ fun_menu() {
         env_msg+="⚠️ <i>SELECT AN OPTION BELOW!</i>\n\n"
 	local start_img
 	start_img="https://telegra.ph/file/d79ee496ef99342e651ef.jpg"
-        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --caption "$env_msg" \
-            --reply_markup "$keyboard1" \
-	    --photo "$start_img" \
-            --parse_mode html
+        ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --photo "$start_img" --caption "$env_msg" \
+            --parse_mode html \
+	    --reply_markup "$keyboard1"
         return 0
     else
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \

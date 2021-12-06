@@ -54,9 +54,10 @@ ___Screenshots___
   <summary><p><b>Click To View [Telegram Bot]</b><div class="div0"> <span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143572065-ca450924-e72b-4041-ab31-3798618973f4.png" alt=""width="30"height="30"/><span><a href=""><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="30"height="30"/></a></span></p></summary></div>
 <br/>
 
-<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/Screenshot%20(38).png" alt=""/></span></p>
-<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/Screenshot%20(39).png" alt=""/></span></p>
-<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/Screenshot%20(40).png" alt=""/></span></p>
+<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/ss4.png" alt=""/></span></p>
+<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/ss3.png" alt=""/></span></p>
+<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/ss1.png" alt=""/></span></p>
+<p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/ss2.png" alt=""/></span></p>
 <p><span><img src="https://github.com/januda-ui/januda-ui/blob/main/icons/Screenshot%20(41).png" alt=""/></span></p>
 </details>
 

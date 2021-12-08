@@ -894,6 +894,7 @@ sobremim() {
     msg+="<b>Official channel:</b> @Dragon_vps_manager\n\n"
     msg+="I was created with the purpose of providing information and tools for VPN management on 🐧 GNU/Linux 🐧 servers.\n\n"
     msg+="<b>Menu:</b> /menu\n"
+    ShellBot.inputMedia --input album --type photo --media 'AgADAQADyqcxGx10kUbF0VrzCBAH-d4n9y8ABAMBhyFEYQ0EO00BAAEC' --caption "ShellBot e os Pinguins de Madagascar.
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --parse_mode html

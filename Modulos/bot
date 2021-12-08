@@ -894,33 +894,9 @@ sobremim() {
     msg+="<b>Official channel:</b> @Dragon_vps_manager\n\n"
     msg+="I was created with the purpose of providing information and tools for VPN management on 🐧 GNU/Linux 🐧 servers.\n\n"
     msg+="<b>Menu:</b> /menu\n"
-    ShellBot.inputMedia --input album --type photo --media 'http://2.bp.blogspot.com/-M53JjEuGjvE/WXM2uL0QpxI/AAAAAAAAI2k/HDEa368-yecsQG7_dgCevxYoIonS4MnmgCK4BGAYYCw/w800/14650669_269510070111655_4132757982135640193_n.png' --caption "SHELL x SCRIPT (blog wallpaper)"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --parse_mode html
-	while :
-do
-	# Obtem as atualizações
-	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
-	
-	# Lista o índice das atualizações
-	for id in $(ShellBot.ListUpdates)
-	do
-	# Inicio thread
-	(
-		# Verifica se a mensagem enviada pelo usuário é um comando válido.
-		case ${message_text[$id]%%@*} in
-			/album) # comando
-				# ação
-				ShellBot.sendChatAction --chat_id ${message_chat_id[$id]} --action upload_video 
-
-				# Envia o álbum contendo as mídias.
-				ShellBot.sendMediaGroup --chat_id ${message_chat_id[$id]} --media "$album"	
-			;;
-		esac
-	) & # Utilize a thread se deseja que o bot responda a várias requisições simultâneas.
-	done
-done
     return 0
 }
 

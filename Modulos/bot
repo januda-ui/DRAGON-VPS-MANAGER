@@ -6,7 +6,7 @@ source ShellBot.sh
 api_bot=$1
 id_admin=$2
 [[ -z $api_bot ]] && exit 0
-[[ -z $id_admin ]] && exit 0
+[[ -z $id_admin ]] && exit 
 [[ ! -e /usr/lib/licence ]] && exit 0
 ativos='/etc/bot/lista_ativos'
 suspensos='/etc/bot/lista_suspensos'

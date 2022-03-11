@@ -22,7 +22,7 @@ ___Tutorial___
 
 <P>
 <div class="div1">
-<span><a href="https://vimeo.com/652289751"><img src="https://user-images.githubusercontent.com/83800532/144345002-c3ec5251-f723-4a81-bcaa-ad4579562218.png" alt=""width="50"height="50"/></a></span>
+<span><a href="https://player.vimeo.com/video/652289751"><img src="https://user-images.githubusercontent.com/83800532/144345002-c3ec5251-f723-4a81-bcaa-ad4579562218.png" alt=""width="50"height="50"/></a></span>
 <span><a href="https://t.me/dragon_vps_manager/18"><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="50"height="50"/></a></span>
 </div>
 </P>

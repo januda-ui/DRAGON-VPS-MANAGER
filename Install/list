@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_lvk=$(wget -qO- https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Sistema/versao)
+_lvk=$(wget -qO- https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/Sistema/versao)
 IP=$(wget -qO- ipv4.icanhazip.com)
 IP2=$(wget -qO- http://whatismyip.akamai.com/)
 [[ "$IP" != "$IP2" ]] && ipdovps="$IP2" || ipdovps="$IP"
@@ -33,16 +33,16 @@ _dir1='/bin'
 _dir2='/etc/VPSManager'
 _dir3='/root'
 rm $_dir2/ShellBot.sh $_dir2/cabecalho $_dir2/open.py $_dir2/proxy.py $_dir2/wsproxy.py >/dev/null 2>&1
-_mdls=("addhost" "delhost" "alterarsenha" "criarusuario" "expcleaner" "mudardata" "remover" "criarteste" "verifbot" "droplimiter" "alterarlimite" "ajuda" "sshmonitor" "badvpn" "userbackup" "instsqd" "blockt" "otimizar" "menu" "speedtest" "banner" "senharoot" "reiniciarservicos" "reiniciarsistema" "attscript" "conexao" "delscript" "detalhes" "botssh"  "botteste" "botgen" "infousers" "verifatt" "limiter" "uexpired" "cabecalho" "bot" "botsshteste" "botgerador" "open.py" "slow_dns" "proxy.py" "wsproxy.py")
+_mdls=("addhost" "delhost" "alterarsenha" "criarusuario" "expcleaner" "mudardata" "remover" "criarteste" "verifbot" "droplimiter" "alterarlimite" "ajuda" "sshmonitor" "badvpn" "userbackup" "instsqd" "blockt" "otimizar" "menu" "speedtest" "banner" "senharoot" "reiniciarservicos" "reiniciarsistema" "attscript" "conexao" "delscript" "detalhes" "botssh"  "botteste" "botgen" "infousers" "verifatt" "limiter" "uexpired" "cabecalho" "bot" "botsshteste" "botgerador" "open.py" "slow_dns" "proxy.py" "wsproxy.py" "firstuse")
 _mdls2=("onlineapp.sh")
 for _arq in ${_mdls[@]}; do
 	[[ -e $_dir1/$_arq ]] && rm $_dir1/$_arq >/dev/null 2>&1
-	wget -c -P $_dir1 https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Modulos/$_arq
+	wget -c -P $_dir1 https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/Modulos/$_arq
 	chmod +x $_dir1/$_arq
 done
 for _arq in ${_mdls2[@]}; do
 	[[ -e $_dir3/$_arq ]] && rm $_dir3/$_arq >/dev/null 2>&1
-	wget -c -P $_dir3 https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Modulos/$_arq
+	wget -c -P $_dir3 https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/Modulos/$_arq
 	chmod +x $_dir3/$_arq
 done
 cd /var/www/html && mkdir server
@@ -67,7 +67,7 @@ clear
 #AUTOMATIC START' >/etc/autostart
 	chmod +x /etc/autostart
 } || {
-	[[ $(ps x | grep "bot_plus" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
+	[[ $(ps x | grep "bot_plus" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
 	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
 		screen -r -S "$proc" -X quit	
 done
@@ -78,7 +78,7 @@ clear
 #AUTOMATIC START' >/etc/autostart
 	chmod +x /etc/autostart
 } || {
-	[[ $(ps x | grep "bot_teste" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
+	[[ $(ps x | grep "bot_teste" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
 	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
 		screen -r -S "$proc" -X quit	
 done
@@ -89,7 +89,7 @@ clear
 #AUTOMATIC START' >/etc/autostart
 	chmod +x /etc/autostart
 } || {
-	[[ $(ps x | grep "bot_gen" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
+	[[ $(ps x | grep "bot_gen" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/Install/ShellBot.sh
 	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
 		screen -r -S "$proc" -X quit	
 done
@@ -110,7 +110,7 @@ crontab -r >/dev/null 2>&1
 	echo "*/1 * * * * cd /root/ && ./onlineapp.sh"
 ) | crontab -
 echo "$_lvk" | sed -n '1 p' | cut -d' ' -f2 >/bin/versao && cat /bin/versao >/home/vpsmanager
-wget https://github.com/januda-ui/DRAGON-VPS-MANAGER/raw/main/Install/jq-linux64 >/dev/null 2>&1
+wget https://github.com/sons-of-liberty/DRAGON-VPS-MANAGER/raw/main/Install/jq-linux64 >/dev/null 2>&1
 chmod +x jq-linux64 && mv jq-linux64 $(which jq)
 service cron restart >/dev/null 2>&1
 service ssh restart >/dev/null 2>&1

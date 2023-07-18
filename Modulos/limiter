@@ -1,34 +1,49 @@
 #!/bin/bash
-
 clear
 database="/root/usuarios.db"
+count=0
 fun_multilogin() {
-	(
-		while read user; do
-			[[ $(grep -wc "$user" $database) != '0' ]] && limit="$(grep -w $user $database | cut -d' ' -f2)" || limit='1'
-			conssh="$(ps -u $user | grep sshd | wc -l)"
-			[[ "$conssh" -gt "$limit" ]] && {
-				pkill -u $user
-			}
-			[[ -e /etc/openvpn/openvpn-status.log ]] && {
-				ovp="$(grep -E ,"$user", /etc/openvpn/openvpn-status.log | wc -l)"
-				[[ "$ovp" -gt "$limit" ]] && {
-					pidokill=$(($limit - $ovp))
-					listpid=$(grep -E ,"$user", /etc/openvpn/openvpn-status.log | cut -d "," -f3 | head -n $pidokill)
-					while read ovpids; do
-						(
-							telnet localhost 7505 <<-EOF
-								kill $ovpids
-							EOF
-						) &>/dev/null &
-					done <<<"$listpid"
-				}
-			}
-		done <<<"$(awk -F: '$3 >= 1000 {print $1}' /etc/passwd)"
-	) &
+        (
+                while read user; do
+                        [[ $(grep -wc "$user" $database) != '0' ]] && limit="$(>
+                        conssh="$(ps -u $user | grep sshd | wc -l)"
+                        [[ "$conssh" -gt "$limit" ]] && {
+                                passwd -l $user
+                                pkill -u $user
+                                echo $user >> /root/locked.db
+                        }
+                        [[ -e /etc/openvpn/openvpn-status.log ]] && {
+                                ovp="$(grep -E ,"$user", /etc/openvpn/openvpn-s>
+                                [[ "$ovp" -gt "$limit" ]] && {
+                                        pidokill=$(($limit - $ovp))
+                                        listpid=$(grep -E ,"$user", /etc/openvp>
+                                        while read ovpids; do
+                                                (
+                                                        telnet localhost 7505 <>
+                                                                kill $ovpids
+                                                        EOF
+                                                ) &>/dev/null &
+                                        done <<<"$listpid"
+                                }
+                        }
+                done <<<"$(awk -F: '$3 >= 1000 {print $1}' /etc/passwd)"
+        ) &
+}
+unlock_users() {
+    if [ -f /root/locked.db ]; then
+        while read -r user; do
+            passwd -u "$user"
+        done < /root/locked.db
+        > /root/locked.db
+    fi
 }
 while true; do
     echo 'Checking...'
-	fun_multilogin > /dev/null 2>&1
-	sleep 15s
+    ((count++))
+        fun_multilogin > /dev/null 2>&1
+        if [ $count -eq 5 ]; then
+        unlock_users > /dev/null 2>&1
+        count=0
+    fi
+        sleep 15s
 done

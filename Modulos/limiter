@@ -40,10 +40,10 @@ unlock_users() {
 while true; do
     echo 'Checking...'
     ((count++))
-        fun_multilogin > /dev/null 2>&1
-        if [ $count -eq 5 ]; then
+    fun_multilogin > /dev/null 2>&1
+    if [ $count -eq 5 ]; then
         unlock_users > /dev/null 2>&1
         count=0
     fi
-        sleep 15s
+    sleep 15s
 done

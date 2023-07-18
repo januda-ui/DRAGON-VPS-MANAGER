@@ -29,7 +29,9 @@ netstat -nplt | grep -w 'apache2' | grep -w '80' && sed -i "s/Listen 80/Listen 8
 [[ "$(grep -o '#Port 22' /etc/ssh/sshd_config)" == "#Port 22" ]] && sed -i "s;#Port 22;Port 22;" /etc/ssh/sshd_config && service ssh restart
 grep -v "^PasswordAuthentication" /etc/ssh/sshd_config >/tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >>/etc/ssh/sshd_config
-echo "session required pam_exec.so stdout /bin/firstuse" >> /etc/pam.d/sshd
+mline='session required pam_exec.so stdout /bin/firstuse'
+mfile='/etc/pam.d/sshd'
+grep -qxF "$mline" "$mfile" || echo "$mline" | tee -a "$mfile" >/dev/null
 _dir1='/bin'
 _dir2='/etc/VPSManager'
 _dir3='/root'

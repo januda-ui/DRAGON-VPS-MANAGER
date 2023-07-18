@@ -16,7 +16,7 @@ ___REFERRAL LINK___
 ___Update System Packages and Install SCRIPT___
 
 ```
-wget https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
+wget https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
 
 ```
 

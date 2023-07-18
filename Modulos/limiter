@@ -33,7 +33,7 @@ fun_multilogin() {
 }
 unlock_users() {
         if [ -f /root/locked.db ]; then
-                while read -r userl do
+                while read -r user; do
                         passwd -u "$user"
                 done < /root/locked.db
                 > /root/locked.db

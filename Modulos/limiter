@@ -9,7 +9,7 @@ fun_multilogin() {
 			[[ $(grep -wc "$user" $database) != '0' ]] && limit="$(grep -w $user $database | cut -d' ' -f2)" || limit='1'
 			conssh="$(ps -u $user | grep sshd | wc -l)"
 			[[ "$conssh" -gt "$limit" ]] && {
-                passwd -l $user
+				passwd -l $user
 				pkill -u $user
 				echo $user >> /root/locked.db
 
@@ -29,15 +29,17 @@ fun_multilogin() {
 				}
 			}
 		done <<<"$(awk -F: '$3 >= 1000 {print $1}' /etc/passwd)"
+
 	) &
 }
+
 unlock_users() {
-        if [ -f /root/locked.db ]; then
-                while read -r user; do
-                        passwd -u "$user"
-                done < /root/locked.db
-                > /root/locked.db
-        fi
+    if [ -f /root/locked.db ]; then
+        while read -r user; do
+            passwd -u "$user"
+        done < /root/locked.db
+        > /root/locked.db
+    fi
 }
 while true; do
     echo 'Checking...'
@@ -48,4 +50,5 @@ while true; do
         count=0
     fi
 	sleep 15s
+
 done

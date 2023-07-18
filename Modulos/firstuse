@@ -1,0 +1,14 @@
+#!/bin/bash
+
+database="/root/usuarios.db"
+temp_file="/tmp/t_t_t"
+user=$PAM_USER
+status="$(grep -w $user $database | cut -d' ' -f4)"
+days="$(grep -w $user $database | cut -d' ' -f3)"
+
+if [ $status -eq 0 ]; then
+    echo $status
+    awk -v usr="$user" 'BEGIN{FS=OFS=" "}{$4 = ($1 == usr ? 1 : $4)}1' "$database" > "$temp_file" && mv "$temp_file" "$database"
+    expiration=$(date "+%Y-%m-%d" -d "+$days days")
+    chage -E $expiration $user
+fi

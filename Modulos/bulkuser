@@ -25,7 +25,7 @@ check_username() {
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "Create bulk user" ; tput sgr0
 echo ""
 echo -ne "\033[1;32mNumber of users\033[1;37m: "; read num
-if [[ -z $num ]] || [[ ${a} != ?(+|-)+([0-9]) ]]
+if [[ -z $num ]] || [[ ${num} != ?(+|-)+([0-9]) ]]
 then
 echo ""
 tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Invalid number of users." ; echo "" ; tput sgr0
@@ -39,28 +39,28 @@ tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Empty or invalid name.
 	exit 1
 fi
 echo -ne "\033[1;32mStarting number\033[1;37m: "; read startnum
-if [[ -z $startnum ]] || [[ ${a} != ?(+|-)+([0-9]) ]]
+if [[ -z $startnum ]] || [[ ${startnum} != ?(+|-)+([0-9]) ]]
 then
 echo ""
 tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Invalid starting number." ; echo "" ; tput sgr0
 	exit 1
 fi
 echo -ne "\033[1;32mPassword length\033[1;37m: "; read passlength
-if [[ -z $passlength ]] || [[ $passlength -lt 4 ]] || [[ ${a} != ?(+|-)+([0-9]) ]]
+if [[ -z $passlength ]] || [[ $passlength -lt 4 ]] || [[ ${passlength} != ?(+|-)+([0-9]) ]]
 then
 echo ""
 tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Length must be number and >=4" ; echo "" ; tput sgr0
 	exit 1
 fi
 echo -ne "\033[1;32mDays\033[1;37m: "; read days
-if [[ -z $days ]] || [[ ${a} != ?(+|-)+([0-9]) ]]
+if [[ -z $days ]] || [[ ${days} != ?(+|-)+([0-9]) ]]
 then
 echo ""
 tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Empty or invalid number of days." ; echo "" ; tput sgr0
 	exit 1
 fi
 echo -ne "\033[1;32mLimit\033[1;37m: "; read limit
-if [[ -z $limit ]] || [[ ${a} != ?(+|-)+([0-9]) ]]
+if [[ -z $limit ]] || [[ ${limit} != ?(+|-)+([0-9]) ]]
 then
 echo ""
 tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Empty or invalid limit.
@@ -70,6 +70,7 @@ fi
 echo "Host,Username,Password,Limit,Exp">/tmp/bulkusers
 for (( i=$startnum; i<=($startnum+$num); i++ )); do
     username=$name$i
+    check_username $username
     password=$(generate_random_pass $passlength)
     pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
     useradd -M -s /bin/false -p $pass $username >/dev/null 2>&1 &

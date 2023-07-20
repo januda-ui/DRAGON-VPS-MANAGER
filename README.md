@@ -43,13 +43,13 @@ menu
 <P>
 <div class="div1">
 <span><a href="https://player.vimeo.com/video/652289751"><img src="https://user-images.githubusercontent.com/83800532/144345002-c3ec5251-f723-4a81-bcaa-ad4579562218.png" alt=""width="50"height="50"/></a></span>
-<span><a href="https://t.me/dragon_vps_manager/18"><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="50"height="50"/></a></span>
+<span><a href="[https://t.me/dragon_vps_manager/18](https://t.me/dragon_ssh)"><img src="https://user-images.githubusercontent.com/83800532/143560346-101a5bbb-53c6-4d1d-90c9-364c3355a6b7.png" alt=""width="50"height="50"/></a></span>
 </div>
 </P>
   
 
 ## Donation
-If you found these new features helpful and would like to support me, you can send you donations to:
+If you found these new features helpful and would like to support me, you can send your donations to:
 - TRON network (TRC20): `TK28Znv9VWF8M9qAZsFHH7EkSVZyKKyZ1v`
 
 Thank You. 

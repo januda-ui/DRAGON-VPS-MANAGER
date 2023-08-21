@@ -21,7 +21,7 @@
 Run this command:
 
 ```
-wget https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/hehe)"
 
 ```
 Once the installation is complete, run:

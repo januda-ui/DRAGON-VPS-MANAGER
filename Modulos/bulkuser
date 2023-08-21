@@ -99,7 +99,7 @@ for (( i=$startnum; i<=($startnum+$num); i++ )); do
     exit 1
     fi
 done
-for (( i=$startnum; i<=($startnum+$num); i++ )); do
+for (( i=$startnum; i<($startnum+$num); i++ )); do
     username=$name$i
     password=$(generate_random_pass $passtype $passlength)
     pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)

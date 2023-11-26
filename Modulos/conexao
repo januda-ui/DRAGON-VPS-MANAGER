@@ -321,7 +321,7 @@ SCOLOR='\033[0m'
 		if netstat -nltp | grep 'dropbear' 1>/dev/null 2>/dev/null; then
 			clear
 			[[ $(netstat -nltp | grep -c 'dropbear') != '0' ]] && dpbr=$(netstat -nplt | grep 'dropbear' | awk -F ":" {'print $4'} | xargs) || sqdp="\033[1;31mINDISPONIVEL"
-			if ps x | grep "limiter" | grep -v grep 1>/dev/null 2>/dev/null; then
+			if ps x | grep "droplimiter" | grep -v grep 1>/dev/null 2>/dev/null; then
 				stats='\033[1;32m♦ '
 			else
 				stats='\033[1;31m○ '
@@ -338,11 +338,11 @@ SCOLOR='\033[0m'
 			read resposta
 			if [[ "$resposta" = '1' ]]; then
 				clear
-				if ps x | grep "limiter" | grep -v grep 1>/dev/null 2>/dev/null; then
+				if ps x | grep "droplimiter" | grep -v grep 1>/dev/null 2>/dev/null; then
 					echo -e "\033[1;32mstopping the limiter... \033[0m"
 					echo ""
 					fun_stplimiter() {
-						pidlimiter=$(ps x | grep "limiter" | awk -F "pts" {'print $1'})
+						pidlimiter=$(ps x | grep "droplimiter" | awk -F "pts" {'print $1'})
 						kill -9 $pidlimiter
 						screen -wipe
 					}
@@ -353,7 +353,7 @@ SCOLOR='\033[0m'
 				else
 					echo -e "\n\033[1;32mStarting the limiter... \033[0m"
 					echo ""
-					fun_bar 'screen -d -m -t limiter droplimiter' 'sleep 3'
+					fun_bar 'screen -d -m -t droplimiter droplimiter' 'sleep 3'
 					echo -e "\n\033[1;32m  LIMITER ENABLED \033[0m"
 					sleep 3
 					fun_drop

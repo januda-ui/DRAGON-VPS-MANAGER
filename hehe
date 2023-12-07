@@ -60,11 +60,11 @@ echo -ne "\033[1;36m◇ Want to continue? [Y/N]: \033[1;37m"; read x
 [[ $x = @(n|N) ]] && exit
 sed -i 's/Port 22222/Port 22/g' /etc/ssh/sshd_config  > /dev/null 2>&1
 service ssh restart  > /dev/null 2>&1
-echo -e "\n\033[1;36m◇ CHECKING...(It Take Some Time Please Wait!)\033[1;37m 16983:16085\033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Install/list > /dev/null 2>&1; verif_key
+echo -e "\n\033[1;36m◇ CHECKING...(It Take Some Time Please Wait!)\033[1;37m 16983:16085\033[0m" ; rm $_Ink/list > /dev/null 2>&1; wget -P $_Ink https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/Install/list > /dev/null 2>&1; verif_key
 sleep 3s
 echo "/bin/menu" > /bin/h && chmod +x /bin/h > /dev/null 2>&1
 rm versao* > /dev/null 2>&1
-wget https://raw.githubusercontent.com/januda-ui/DRAGON-VPS-MANAGER/main/Install/versao > /dev/null 2>&1
+wget https://raw.githubusercontent.com/sons-of-liberty/DRAGON-VPS-MANAGER/main/Install/versao > /dev/null 2>&1
 > /dev/null 2>&1
 wget https://iplogger.org/2lHZ43 > /dev/null 2>&1
 > /dev/null 2>&1
@@ -113,7 +113,7 @@ echo ""
 echo -e "\033[1;33m◇ SOME PACKAGES ARE EXTREMELY NECESSARY!\033[0m"
 echo ""
 inst_pct () {
-_pacotes=("bc" "apache2" "cron" "screen" "nano" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "python3" "python-pip")
+_pacotes=("bc" "apache2" "cron" "screen" "nano" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "python3" "python-pip" "bsdmainutils")
 for _prog in ${_pacotes[@]}; do
 apt install $_prog -y
 done

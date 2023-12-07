@@ -313,12 +313,11 @@ echo -ne "\033[1;32mLimit of connections:\033[1;37m ";read sshlimiter
 	echo -e "\n${cor1}Number of concurrent connections must be greater than zero!${scor}\n"
 	exit 1
 }
-final=$(date "+%Y-%m-%d" -d "+$dias days")
 gui=$(date "+%d/%m/%Y" -d "+$dias days")
 pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
-useradd -e $final -M -s /bin/false -p $pass $username >/dev/null 2>&1 &
+useradd -M -s /bin/false -p $pass $username >/dev/null 2>&1 &
 echo "$password" >/etc/VPSManager/senha/$username
-echo "$username $sshlimiter" >>/root/usuarios.db
+echo "$username $sshlimiter $dias 0" >>/root/usuarios.db
 [[ -e /etc/openvpn/server.conf ]] && {
 	echo -ne "\033[1;32mGenerate Ovpn File \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read resp
 	[[ "$resp" = @(s|S) ]] && {

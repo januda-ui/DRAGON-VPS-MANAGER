@@ -83,12 +83,12 @@ function limit1 () {
    clear
    echo -e "\n\033[1;32m◇ㅤSTARTING USER LIMITER... \033[0m"
    echo ""
-   fun_bar 'screen -dmS limiter limiter' 'sleep 3'
+   fun_bar 'screen -dmS sshlimiter limiter' 'sleep 3'
    [[ $(grep -wc "limiter" /etc/autostart) = '0' ]] && {
-       echo -e "ps x | grep 'limiter' | grep -v 'grep' && echo 'ON' || screen -dmS limiter limiter" >> /etc/autostart
+       echo -e "ps x | grep 'sshlimiter' | grep -v 'grep' && echo 'ON' || screen -dmS sshlimiter limiter" >> /etc/autostart
    } || {
        sed -i '/limiter/d' /etc/autostart
-	   echo -e "ps x | grep 'limiter' | grep -v 'grep' && echo 'ON' || screen -dmS limiter limiter" >> /etc/autostart
+	   echo -e "ps x | grep 'sshlimiter' | grep -v 'grep' && echo 'ON' || screen -dmS sshlimiter limiter" >> /etc/autostart
    }
    echo -e "\n\033[1;32m◇ㅤUSER LIMITER ACTIVED !\033[0m"
    sleep 3
@@ -100,9 +100,9 @@ function limit2 () {
    echo ""
    fun_stplimiter () {
       sleep 1
-      screen -r -S "limiter" -X quit
+      screen -r -S "sshlimiter" -X quit
       screen -wipe 1>/dev/null 2>/dev/null
-      [[ $(grep -wc "limiter" /etc/autostart) != '0' ]] && {
+      [[ $(grep -wc "sshlimiter" /etc/autostart) != '0' ]] && {
           sed -i '/limiter/d' /etc/autostart
       }
       sleep 1
@@ -113,7 +113,7 @@ function limit2 () {
    menu
 }
 function limit_ssh () {
-[[ $(ps x | grep "limiter"|grep -v grep |wc -l) = '0' ]] && limit1 || limit2
+[[ $(ps x | grep "sshlimiter"|grep -v grep |wc -l) = '0' ]] && limit1 || limit2
 }
 
 function autoexec () {
@@ -262,7 +262,7 @@ esac
 }
 while true $x != "ok"
 do
-stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m♦ " || echo -e "\033[1;31m○ ")
+stsl=$(ps x | grep "sshlimiter"|grep -v grep > /dev/null && echo -e "\033[1;32m♦ " || echo -e "\033[1;31m○ ")
 stsu=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m♦ " || echo -e "\033[1;31m○ ")
 if [[ "$(grep -c "Ubuntu" /etc/issue.net)" = "1" ]]; then
 system=$(cut -d' ' -f1 /etc/issue.net)

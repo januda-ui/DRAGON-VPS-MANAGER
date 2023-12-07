@@ -10,7 +10,7 @@ fun_badvpn() {
     fi
     var_sks1=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m♦ " || echo -e "\033[1;31m○ ")
     echo ""
-    echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mACTIVATE BADVPN(Port 7300) $var_sks1 \033[0m"
+    echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mACTIVATE BADVPN(Port 7200) $var_sks1 \033[0m"
     echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mOPEN THE PORT\033[0m"
     echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mCOME BACK\033[0m"
     echo ""
@@ -43,12 +43,12 @@ fun_badvpn() {
             clear
             echo -e "\033[1;32m◇ STARTING BADVPN... \033[0m\n"
             fun_udpon () {
-                screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000 --max-connections-for-client 8
+                screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 10000 --max-connections-for-client 8
                 [[ $(grep -wc "udpvpn" /etc/autostart) = '0' ]] && {
-                    echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000" >> /etc/autostart
+                    echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000" >> /etc/autostart
                 } || {
                     sed -i '/udpvpn/d' /etc/autostart
-                    echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000" >> /etc/autostart
+                    echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 10000 --max-connections-for-client 8 --client-socket-sndbuf 10000" >> /etc/autostart
                 }
                 sleep 1
             }
